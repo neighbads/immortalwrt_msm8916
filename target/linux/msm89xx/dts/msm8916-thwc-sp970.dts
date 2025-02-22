@@ -1,0 +1,72 @@
+// SPDX-License-Identifier: GPL-2.0-only
+
+/dts-v1/;
+
+#include "msm8916-ufi.dtsi"
+
+/ {
+	model = "ufi-sp970 4G Modem Stick";
+	compatible = "thwc,sp970", "qcom,msm8916";
+
+};
+
+&button_restart {
+	gpios = <&msmgpio 107 GPIO_ACTIVE_LOW>;
+};
+
+&led_r {
+	gpios = <&msmgpio 9 GPIO_ACTIVE_HIGH>;
+};
+
+&led_g {
+	gpios = <&msmgpio 10 GPIO_ACTIVE_HIGH>;
+};
+
+&led_b {
+	gpios = <&msmgpio 28 GPIO_ACTIVE_HIGH>;
+};
+
+/*&mpss {
+	pinctrl-0 = <&sim_ctrl_default>;
+	pinctrl-names = "default";
+};*/
+
+&button_default {
+	pins = "gpio107";
+	bias-pull-up;
+};
+
+&gpio_leds_default {
+	pins = "gpio28", "gpio10", "gpio9";
+};
+
+/* This selects the external SIM card slot by default */
+/*&msmgpio {
+	sim_ctrl_default: sim-ctrl-default-state {
+		pins = "gpio120", "gpio114";
+		function = "gpio";
+		drive-strength = <2>;
+		bias-disable;
+
+		sim-en-pins {
+			label = "sim:en";
+			gpios = <&msmgpio 120 GPIO_ACTIVE_HIGH>;
+			default-state = "on";
+		};
+
+		sim-sel-pins {
+			label = "sim:sel";
+			gpios = <&msmgpio 114 GPIO_ACTIVE_HIGH>;
+			default-state = "off";
+		};
+	};
+
+	usb_id_default: usb-id-default {
+		pins = "gpio110";
+		function = "gpio";
+
+		drive-strength = <8>;
+		input-enable;
+		bias-pull-up;
+	};
+};*/
